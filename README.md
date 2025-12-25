@@ -67,7 +67,7 @@ To run this dashboard on your local machine:
 
 1. **Clone the repository:**
    
-   git clone [https://github.com/YOUR_USERNAME/movie-analytics-dashboard.git](https://github.com/YOUR_USERNAME/movie-analytics-dashboard.git)
+   git clone [https://github.com/Wttcss/movie-analytics-dashboard.git](https://github.com/YOUR_USERNAME/movie-analytics-dashboard.git)
 2. **Navigate to the project:**
     cd movie-analytics-dashboard
  3. **Install dependencies:**

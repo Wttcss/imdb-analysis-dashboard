@@ -95,4 +95,9 @@ on hypothetical inputs.
 purposes only and should not be interpreted as financial advice.
 
 ---
+## 🔮 Future Improvements
+While the current model has an R² of ~0.75, further improvements could include:
+1.  **NLP Analysis:** Using `TfidfVectorizer` on the *Keywords* and *Overview* columns to find profitable plot themes.
+2.  **Cast Power:** integrating a "Star Power" score by scraping actor popularity data.
+3.  **Inflation Adjustment:** Adjusting older movie budgets to 2025 dollars for more accurate comparison.
 

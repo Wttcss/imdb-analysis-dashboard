@@ -61,6 +61,7 @@ graph LR
     D --> E[Gradient Boosting Model]
     E --> F[Streamlit Interface]
     F -->|User Input| G((Revenue Forecast))
+```
 ## ⚙️ Local Installation
 To run this dashboard on your local machine:
 
@@ -73,7 +74,7 @@ To run this dashboard on your local machine:
     pip install -r requirements.txt
 4. **Run the app:**
      streamlit run app.py
-```
+
 ## 🔮 Future Improvements
 While the current model achieves an **R² of ~0.75**, future roadmap items include:
 

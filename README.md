@@ -106,9 +106,9 @@ While the current model has an R² of ~0.75, further improvements could include:
 
 | **1. Dashboard Overview** | **2.top 10 movies ** | **3.Executive Decision Support** |
 |:---:|:---:|:---:|
-| <img src="screenshots/dashboard_view.png" width="300"> | <img src="screenshots/top 10 movies.png" width="300"> | <img src="screenshots/Executive Decision Support.png" width="300"> |
+| <img src="screen shots/dashboard_view.png" width="300"> | <img src="screen shots/top 10 movies.png" width="300"> | <img src="screen shots/Executive Decision Support.png" width="300"> |
 
 | **4. ROI Analysis** | **5. Forcasting Model  |
 |:---:|:---:|
-| <img src="screenshots/ROI.png" width="400"> | <img src="screenshots/Ai Simulator.png" width="400"> |
+| <img src="screen shots/ROI.png" width="400"> | <img src="screen shots/Ai Simulator.png" width="400"> |
 | *Real-time revenue prediction* | *Additional insights or model metrics* |

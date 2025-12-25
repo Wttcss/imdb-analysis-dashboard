@@ -61,3 +61,25 @@ graph LR
     D --> E[Gradient Boosting Model]
     E --> F[Streamlit Interface]
     F -->|User Input| G((Revenue Forecast))
+## ⚙️ Local Installation
+To run this dashboard on your local machine:
+
+1. **Clone the repository:**
+   
+   git clone [https://github.com/YOUR_USERNAME/movie-analytics-dashboard.git](https://github.com/YOUR_USERNAME/movie-analytics-dashboard.git)
+2. **Navigate to the project:**
+    cd movie-analytics-dashboard
+ 3. **Install dependencies:**
+    pip install -r requirements.txt
+4. **Run the app:**
+     streamlit run app.py
+```
+## 🔮 Future Improvements
+While the current model achieves an **R² of ~0.75**, future roadmap items include:
+
+* **NLP Analysis:** Using `TfidfVectorizer` on movie overviews to correlate plot keywords with revenue.
+* **Star Power Index:** Scraping actor popularity data to quantify the "Cast Effect" on box office returns.
+* **Inflation Adjustment:** Normalizing financial data to 2025 USD for historically accurate comparisons.
+
+---
+*Created by [Faisal Abdulaziz]*

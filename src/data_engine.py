@@ -35,19 +35,4 @@ def train_model(df):
             ('cat', OneHotEncoder(handle_unknown='ignore'), ['main_genre'])
         ])
 
-        # --- YOUR CUSTOM MODEL CONFIGURATION ---
-        model = Pipeline([
-            ('pre', pre),
-            ('clf', GradientBoostingRegressor(
-                n_estimators=300,
-                learning_rate=0.05,
-                max_depth=4,
-                min_samples_leaf=10,
-                random_state=42
-            ))
-        ])
-
-        model.fit(X, y)
-        return model
-    except:
-        return None
+     

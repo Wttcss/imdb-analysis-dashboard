@@ -9,6 +9,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder
 import urllib.parse
 import numpy as np
+import os
 
 # =============================================================================
 # 1. APP CONFIGURATION
@@ -161,23 +162,32 @@ def get_smart_poster(title):
 # 4. DATA ENGINE
 # =============================================================================
 @st.cache_data
-def load_data(file):
+def load_data(file_path):
+    # This logic allows the app to work whether the user has the file
+    # in the main folder or in a 'data' subfolder
     try:
-        df = pd.read_csv(file)
-        if 'release_date' in df.columns:
-            df['release_date'] = pd.to_datetime(df['release_date'], errors='coerce')
-            df['Year'] = df['release_date'].dt.year
-        else:
-            df['Year'] = 0
-        for c in ['budget', 'revenue', 'popularity', 'runtime', 'vote_average']:
-            if c in df.columns: df[c] = pd.to_numeric(df[c], errors='coerce').fillna(0)
-        df = df[(df['budget'] > 1000) & (df['revenue'] > 0)]
-        df['ROI'] = (df['revenue'] - df['budget']) / df['budget']
-        df['profit'] = df['revenue'] - df['budget']
-        df = df[df['main_genre'].notna() & (df['main_genre'] != '')]
-        return df
+        df = pd.read_csv(file_path)
+    except FileNotFoundError:
+        # If not found in the root, try the 'data' folder
+        try:
+            df = pd.read_csv(f"data/{file_path}")
+        except:
+            return pd.DataFrame() # Return empty if fails everywhere
     except:
         return pd.DataFrame()
+
+    if 'release_date' in df.columns:
+        df['release_date'] = pd.to_datetime(df['release_date'], errors='coerce')
+        df['Year'] = df['release_date'].dt.year
+    else:
+        df['Year'] = 0
+    for c in ['budget', 'revenue', 'popularity', 'runtime', 'vote_average']:
+        if c in df.columns: df[c] = pd.to_numeric(df[c], errors='coerce').fillna(0)
+    df = df[(df['budget'] > 1000) & (df['revenue'] > 0)]
+    df['ROI'] = (df['revenue'] - df['budget']) / df['budget']
+    df['profit'] = df['revenue'] - df['budget']
+    df = df[df['main_genre'].notna() & (df['main_genre'] != '')]
+    return df
 
 
 @st.cache_resource
@@ -215,23 +225,15 @@ def train_model(df):
 # =============================================================================
 # 5. UI LAYOUT
 # =============================================================================
-if 'data_loaded' not in st.session_state:
-    st.markdown("""
-    <div style="text-align:center; padding:80px 20px; background:radial-gradient(circle, #1A1A1A 0%, #050505 100%); border-radius:24px; border:1px solid #222;">
-        <h1 style="color:#F5C518; font-size:3.5rem; margin-bottom:10px;">IMDb ONYX</h1>
-        <p style="color:#ccc; font-size:1.2rem; margin-bottom:30px;">Strategic Box Office Intelligence</p>
-    </div>
-    """, unsafe_allow_html=True)
-    uploaded_file = st.file_uploader("Upload 'dash.csv' to Unlock", type="csv")
-    if uploaded_file:
-        st.session_state['data_loaded'] = True
-        st.session_state['file'] = uploaded_file
-        st.rerun()
-    st.stop()
 
-df = load_data(st.session_state['file'])
+# --- AUTOMATIC DATA LOADING LOGIC ---
+# We try to load 'dash.csv' directly.
+df = load_data('dash.csv')
+
+# If the dataframe is empty, it means the file wasn't found.
 if df.empty:
-    st.error("Data Unreadable.")
+    st.error("⚠️ Critical Error: 'dash.csv' not found!")
+    st.info("Please ensure 'dash.csv' is in the same folder as app.py (or in a 'data' folder).")
     st.stop()
 
 # HERO
@@ -395,7 +397,7 @@ with col2:
     st.markdown("""
     <div style="text-align: center; font-family: 'Inter', sans-serif;">
         <p style="color: #888888; font-size: 14px; margin-bottom: 5px;">
-            Designed & Built by <strong style="color: #E5E5E5;">[Faisal Abdulaziz]</strong>
+            Designed & Built by <strong style="color: #E5E5E5;">Faisal Abdulaziz</strong>
         </p>
         <p style="font-size: 14px;">
             <a href="https://www.linkedin.com/in/faisal-abdulaziz-44145b323/" target="_blank" style="text-decoration: none; color: #F5C518; font-weight: 600; margin-right: 15px;">

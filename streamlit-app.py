@@ -407,3 +407,6 @@ with col2:
         </p>
     </div>
     """, unsafe_allow_html=True)
+
+
+    # sometimes it gaves "data unreadable" at the Ai Simulator section [just refresh and it will run ]

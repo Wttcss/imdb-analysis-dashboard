@@ -382,3 +382,28 @@ with tab3:
                 m1.metric("Forecasted Revenue", f"${pred:,.0f}")
                 m2.metric("Forecasted Profit", f"${profit:,.0f}", delta=f"{(profit / b) * 100:.0f}% ROI")
                 if profit > 0: st.balloons()
+#-------------------------------------------------------------
+# =============================================================================
+# FOOTER
+# =============================================================================
+st.markdown("---")  # This adds a thin divider line
+
+# We use 3 columns to center the content in the middle
+col1, col2, col3 = st.columns([1, 2, 1])
+
+with col2:
+    st.markdown("""
+    <div style="text-align: center; font-family: 'Inter', sans-serif;">
+        <p style="color: #888888; font-size: 14px; margin-bottom: 5px;">
+            Designed & Built by <strong style="color: #E5E5E5;">[Faisal Abdulaziz]</strong>
+        </p>
+        <p style="font-size: 14px;">
+            <a href="https://www.linkedin.com/in/faisal-abdulaziz-44145b323/" target="_blank" style="text-decoration: none; color: #F5C518; font-weight: 600; margin-right: 15px;">
+                LinkedIn ↗
+            </a>
+            <a href="https://github.com/Wttcss" target="_blank" style="text-decoration: none; color: #F5C518; font-weight: 600;">
+                GitHub ↗
+            </a>
+        </p>
+    </div>
+    """, unsafe_allow_html=True)

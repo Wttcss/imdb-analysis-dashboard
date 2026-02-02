@@ -21,7 +21,7 @@ The **IMDb Strategic Analytics Dashboard** is a full-stack data science project 
 |:---:|:---:|
 | <img src="screen shots/ROI.png" width="400"> | <img src="screen shots/Ai Simulator.png" width="400"> |
 | *Additional insights or model metrics* | *Real-time revenue prediction* |
-Additional insights or model metrics
+
 
 ---
 
